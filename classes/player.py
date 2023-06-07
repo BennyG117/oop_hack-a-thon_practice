@@ -2,16 +2,18 @@ from . import deck
 
 class Player:
 
-    def __init__( self, name, hand=[], hand_value=0, aces = False):
+    def __init__( self, name, hand=[], hand_value=0, aces = False, bust = False):
 
         self.name = name
         self.hand = hand
         self.hand_value = hand_value
         self.aces = aces
+        self.bust = bust
         self.deck = deck.Deck()
 
 #draw a card function(by default when starting draws 2 cards)- add card from hand and remove card from deck
     def draw_card(self):
+        print('draw card called')
         self.hand.append(self.deck.cards.pop())
         return self
 
@@ -36,9 +38,8 @@ class Player:
 
 #when we draw, print out the new hand value
     def show_hand(self):
-        for card in self.hand:
-            card.show_cards()
-            return self
+        self.deck.show_cards()
+        return self
 
 # player actions to hit, stay, fold
     def hit_stay(self):

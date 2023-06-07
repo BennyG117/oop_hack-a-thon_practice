@@ -1,4 +1,6 @@
 from classes.deck import Deck
+from classes.player import Player
+from classes.dealer import Dealer
 import random #add random built-in
 
 # bicycle = Deck()
@@ -30,13 +32,20 @@ import random #add random built-in
 
 # all pseudo-code, not working code below
 # parent - Player
-child - Player, Dealer
+# child - Player, Dealer
 
 gambler1 = Player('John')
-gambler2 = Player('Ben')
 
 dealer = Dealer('Aaron')
-dealer.bust_check()
+
+# dealer.bust_check()
+
 # checked during game
-dealer.hand_value >= gambler1.hand_value
+
+# dealer.hand_value >= gambler1.hand_value
+
 # if player == 21 && dealer == 21, draw
+
+print(gambler1.draw_card())
+
+# print(dealer.)

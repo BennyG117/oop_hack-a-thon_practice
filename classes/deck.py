@@ -23,7 +23,8 @@ class Deck:
                     str_val = str(i)
                 self.cards.append( card.Card( s , i , str_val ) )
 
-    def show_cards(self):
+    def show_cards(self): # links to show hand in player.py
+        
         for card in self.cards:
             card.card_info()
         return self
