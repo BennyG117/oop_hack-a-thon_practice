@@ -1,4 +1,4 @@
-from . import deck
+from deck import Deck
 
 class Player:
 
@@ -9,11 +9,10 @@ class Player:
         self.hand_value = hand_value
         self.aces = aces
         self.bust = bust
-        self.deck = deck.Deck()
+        self.deck = Deck()
 
 #draw a card function(by default when starting draws 2 cards)- add card from hand and remove card from deck
     def draw_card(self):
-        print('draw card called')
         self.hand.append(self.deck.cards.pop())
         return self
 
@@ -21,6 +20,7 @@ class Player:
 
 #check value of hand at beginning
     def check_initval(self):
+        print('check init is called')
         self.hand_value = 0
         for card in self.hand:
             # checking face cards. Jack - King = 11 - 14, so flatten values to 10
@@ -29,16 +29,15 @@ class Player:
             # checking for Aces
             elif card.point_val == 1:
                 self.hand_value += 11
-                Player.ace_bust_check(self.hand_value, self.aces)
+                Player.ace_bust_check()
                 self.aces = True
             else: # not an Ace or Face card
                 self.hand_value += card.point_val
         return self
 
-
 #when we draw, print out the new hand value
     def show_hand(self):
-        self.deck.show_cards()
+        self.hand.show_cards()
         return self
 
 # player actions to hit, stay, fold
@@ -62,11 +61,11 @@ class Player:
 
 #.bust_check(self.hand_value, self.aces)
 
-    def ace_bust_check(self, hand_sum, ace_check):
-        if hand_sum > 21: # check if hand is greater than 21
-            if ace_check == True: # check if player has aces
-                hand_sum -= 10 # change Ace value from 11 to 1
-                ace_check = False
+    def ace_bust_check(self):
+        if self.hand_value > 21: # check if hand is greater than 21
+            if self.ace_check == True: # check if player has aces
+                self.hand_value -= 10 # change Ace value from 11 to 1
+                self.ace_check = False
         return self
 
     

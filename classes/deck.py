@@ -1,4 +1,4 @@
-from . import card
+from card import Card
 import random
 
 class Deck:
@@ -21,9 +21,9 @@ class Deck:
                     str_val = "King"
                 else:
                     str_val = str(i)
-                self.cards.append( card.Card( s , i , str_val ) )
+                self.cards.append( Card( s , i , str_val ) )
 
-    def show_cards(self): # links to show hand in player.py
+    def show_cards(self): # links to show hand in player.py // add argument (list of cards, etc)
         
         for card in self.cards:
             card.card_info()
